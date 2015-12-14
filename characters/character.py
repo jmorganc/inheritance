@@ -11,14 +11,23 @@ class Character(metaclass=ABCMeta):
     mp = 1
 
     ddef = 1
-    rdef = 1
     mdef = 1
+    rdef = 1
 
     str = 1
     int = 1
     dex = 1
 
-    weapon = unarmed.Unarmed()
+    gear = {
+        'head': None,
+        'chest': None,
+        'gloves': None,
+        'pants': None,
+        'boots': None,
+        'weapon': unarmed.Unarmed()
+    }
+
+    inventory_size = 1
     inventory = {}
 
 
@@ -33,7 +42,7 @@ class Character(metaclass=ABCMeta):
             print('That target is already dead.')
             return
 
-        target.hp = target.hp - (1 * self.weapon.ddmg)
+        target.hp = target.hp - (1 * self.gear['weapon'].ddmg)
 
 
     def rangedAttack(self, target):
@@ -42,7 +51,7 @@ class Character(metaclass=ABCMeta):
             print('That target is already dead.')
             return
 
-        target.hp = target.hp - (1 * self.weapon.rdmg)
+        target.hp = target.hp - (1 * self.gear['weapon'].rdmg)
 
 
     def magicAttack(self, target):
@@ -51,7 +60,7 @@ class Character(metaclass=ABCMeta):
             print('That target is already dead.')
             return
 
-        target.hp = target.hp - (1 * self.weapon.mdmg)
+        target.hp = target.hp - (1 * self.gear['weapon'].mdmg)
 
 
     def defend(self):
