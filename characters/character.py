@@ -4,49 +4,37 @@ from weapons import unarmed
 
 class Character(metaclass=ABCMeta):
 
-    name = ''
-    level = 1
-
-    hp_max = 1
-    hp = 1
-    mp_max = 1
-    mp = 1
-
-    ddef = 1
-    mdef = 1
-    rdef = 1
-
-    str = 1
-    int = 1
-    dex = 1
-
-    gear = {
-        'head': None,
-        'chest': None,
-        'gloves': None,
-        'pants': None,
-        'boots': None,
-        'ring': None,
-        'necklace': None,
-        'weapon': unarmed.Unarmed()
-    }
-
-    inventory_size = 1
-    inventory = {}
-
-
     @abstractmethod
     def __init__(self, name='Character'):
         self.name = name
+        self.level = 1
 
+        self.hp_max = 1
+        self.hp = 1
+        self.mp_max = 1
+        self.mp = 1
 
-    def battle(self, target):
-        """
-        Exchange attacks until someone is dead
-        """
-        while not self.isDead() or not target.isDead():
-            self.attack(target)
-            target.attack(self)
+        self.ddef = 1
+        self.mdef = 1
+        self.rdef = 1
+
+        self.str = 1
+        self.int = 1
+        self.dex = 1
+
+        self.gear = {
+            'head': None,
+            'chest': None,
+            'gloves': None,
+            'pants': None,
+            'boots': None,
+            'ring': None,
+            'necklace': None,
+            'weapon': unarmed.Unarmed()
+        }
+
+        self.inventory_size = 1
+        self.inventory = {}
 
 
     def attack(self, target):
@@ -57,11 +45,11 @@ class Character(metaclass=ABCMeta):
             return
 
         if self.gear['weapon'].melee:
-            damage_dealt = self._meleeAttack(target)
+            damage_dealt = self._meleeAttack()
         elif self.gear['weapon'].magic:
-            damage_dealt = self._magicAttack(target)
+            damage_dealt = self._magicAttack()
         elif self.gear['weapon'].ranged:
-            damage_dealt = self._rangedAttack(target)
+            damage_dealt = self._rangedAttack()
         else:
             sys.exit('Unknown weapon type.')
 
@@ -70,15 +58,15 @@ class Character(metaclass=ABCMeta):
         return damage_dealt
 
 
-    def _meleeAttack(self, target):
+    def _meleeAttack(self):
         return self.gear['weapon'].ddmg
 
 
-    def _rangedAttack(self, target):
+    def _rangedAttack(self):
         return self.gear['weapon'].rdmg
 
 
-    def _rangedAttack(self, target):
+    def _rangedAttack(self):
         return self.gear['weapon'].mdmg
 
 

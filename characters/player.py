@@ -5,4 +5,6 @@ class Player(character.Character):
 
     @abstractmethod
     def __init__(self, name='Player'):
+        super().__init__()
+
         self.name = name

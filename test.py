@@ -11,59 +11,33 @@ from weapons.wand import Wand
 
 def main():
     myWarrior = WarriorPlayer('Brutus')
+    myWarrior.gear['weapon'] = Sword()
+
     enemy = RockMonster()
 
-    myWarrior.battle(enemy)
-
-    # myWarrior.attack(enemy)
-    # print(enemy.hp)
+    battle(myWarrior, enemy)
 
 
-    # srmc_1 = RockMonster()
-    # srmc_2 = RockMonster()
-    # print(srmc_2.hp)
-    # print('Dead?', srmc_2.isDead())
+def battle(attacker, target):
+    """
+    Exchange attacks until someone is dead
+    """
+    while not attacker.isDead() and not target.isDead():
+        battleStatus(attacker, target)
 
-    # print(srmc_1.gear['weapon'])
-    # srmc_1.meleeAttack(srmc_2)
-    # print(srmc_2.hp)
-    # print('Dead?', srmc_2.isDead())
+        attacker.attack(target)
+        if target.isDead():
+            print('{} has defeated {}!'.format(attacker.name, target.name))
+            return
 
-    # srmc_1.gear['weapon'] = Sword()
-    # print(srmc_1.gear['weapon'])
-    # srmc_1.meleeAttack(srmc_2)
-    # print(srmc_2.hp)
-    # print('Dead?', srmc_2.isDead())
+        target.attack(attacker)
+        if attacker.isDead():
+            print('{} has defeated {}!'.format(target.name, attacker.name))
+            return
 
-    # srmc_1.gear['weapon'] = Bow()
-    # print(srmc_1.gear['weapon'])
-    # srmc_1.rangedAttack(srmc_2)
-    # print(srmc_2.hp)
-    # print('Dead?', srmc_2.isDead())
 
-    # srmc_1.gear['weapon'] = Wand()
-    # print(srmc_1.gear['weapon'])
-    # srmc_1.magicAttack(srmc_2)
-    # print(srmc_2.hp)
-    # print('Dead?', srmc_2.isDead())
-
-    # srmc_1.gear['weapon'] = Wand()
-    # print(srmc_1.gear['weapon'])
-    # srmc_1.magicAttack(srmc_2)
-    # print(srmc_2.hp)
-    # print('Dead?', srmc_2.isDead())
-
-    # srmc_1.gear['weapon'] = Wand()
-    # print(srmc_1.gear['weapon'])
-    # srmc_1.magicAttack(srmc_2)
-    # print(srmc_2.hp)
-    # print('Dead?', srmc_2.isDead())
-
-    # srmc_1.gear['weapon'] = Wand()
-    # print(srmc_1.gear['weapon'])
-    # srmc_1.magicAttack(srmc_2)
-    # print(srmc_2.hp)
-    # print('Dead?', srmc_2.isDead())
+def battleStatus(attacker, target):
+    print('{}\'s HP: {}/{}. {}\'s HP: {}/{}'.format(attacker.name, attacker.hp, attacker.hp_max, target.name, target.hp, target.hp_max))
 
 
 if __name__ == '__main__':

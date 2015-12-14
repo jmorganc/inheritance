@@ -3,18 +3,15 @@ from abc import ABCMeta, abstractmethod
 
 class Weapon(metaclass=ABCMeta):
 
-    name = 'Weapon'
-    level = 0
-
-    ddmg = 0
-    rdmg = 0
-    mdmg = 0
-
-    acc = 0
-
-    cooldown = 0
-
-
     @abstractmethod
     def __init__(self):
-        pass
+        self.name = 'Weapon'
+        self.level = 0
+
+        self.ddmg = 0
+        self.rdmg = 0
+        self.mdmg = 0
+
+        self.acc = 0
+
+        self.cooldown = 0
