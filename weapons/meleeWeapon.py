@@ -1,8 +1,10 @@
+from abc import ABCMeta, abstractmethod
 from weapons import weapon
 
 class MeleeWeapon(weapon.Weapon):
 
+    @abstractmethod
     def __init__(self):
         super().__init__()
 
-        self.dmg = 5
+        self.cooldown = 2.5

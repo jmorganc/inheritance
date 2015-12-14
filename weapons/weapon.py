@@ -7,6 +7,8 @@ class Weapon(metaclass=ABCMeta):
     rdmg = 0
     mdmg = 0
 
+    cooldown = 0
+
 
     @abstractmethod
     def __init__(self):

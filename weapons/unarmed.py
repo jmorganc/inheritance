@@ -6,3 +6,4 @@ class Unarmed(meleeWeapon.MeleeWeapon):
         super().__init__()
 
         self.dmg = 1
+        self.cooldown = 5

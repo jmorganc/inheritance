@@ -6,3 +6,4 @@ class Sword(meleeWeapon.MeleeWeapon):
         super().__init__()
 
         self.dmg = 5
+        self.cooldown = 5

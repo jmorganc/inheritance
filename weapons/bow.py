@@ -1,6 +1,6 @@
-from weapons import meleeWeapon
+from weapons import rangedWeapon
 
-class Bow(meleeWeapon.MeleeWeapon):
+class Bow(rangedWeapon.RangedWeapon):
 
     def __init__(self):
         super().__init__()

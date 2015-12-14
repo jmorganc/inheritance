@@ -1,9 +1,9 @@
-from weapons import meleeWeapon
+from weapons import magicWeapon
 
-class Wand(meleeWeapon.MeleeWeapon):
+class Wand(magicWeapon.MagicWeapon):
 
     def __init__(self):
         super().__init__()
 
-        self.dmg = 0
+        self.dmg = 2
         self.mdmg = 10
