@@ -8,3 +8,4 @@ class Player(character.Character):
         super().__init__()
 
         self.name = name
+        self.exp_max = self.level * 10

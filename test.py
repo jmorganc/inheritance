@@ -16,6 +16,7 @@ def main():
 
     enemy = RockMonster()
 
+    # Should return exp and loot?
     battle(myWarrior, enemy)
 
 
