@@ -3,6 +3,8 @@ from weapons import weapon
 
 class MagicWeapon(weapon.Weapon):
 
+    name = 'Magic Weapon'
+
     @abstractmethod
     def __init__(self):
         super().__init__()

@@ -2,6 +2,8 @@ from characters import monster
 
 class RockMonster(monster.Monster):
 
+    name = 'Rock Monster'
+
     def __init__(self):
         super().__init__()
 

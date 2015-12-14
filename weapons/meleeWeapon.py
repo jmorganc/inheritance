@@ -3,6 +3,8 @@ from weapons import weapon
 
 class MeleeWeapon(weapon.Weapon):
 
+    name = 'Melee Weapon'
+
     @abstractmethod
     def __init__(self):
         super().__init__()

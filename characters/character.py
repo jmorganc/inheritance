@@ -4,44 +4,53 @@ from weapons import unarmed
 
 class Character(metaclass=ABCMeta):
 
-    hp = 0
-    mp = 0
+    name = 'Character'
+    level = 1
 
-    ddef = 0
-    rdef = 0
-    mdef = 0
+    hp = 1
+    mp = 1
 
-    str = 0
-    int = 0
-    dex = 0
+    ddef = 1
+    rdef = 1
+    mdef = 1
 
-    weapon = None
+    str = 1
+    int = 1
+    dex = 1
+
+    weapon = unarmed.Unarmed()
+    inventory = {}
 
 
     @abstractmethod
     def __init__(self):
-        self.hp = 5
-        self.mp = 5
-
-        self.str = 5
-        self.int = 5
-        self.dex = 5
-
-        self.weapon = unarmed.Unarmed()
+        pass
 
 
     def meleeAttack(self, target):
         print('Attack!')
-        target.hp = target.hp - (1 * self.weapon.dmg)
+        if target.isDead():
+            print('That target is already dead.')
+            return
+
+        target.hp = target.hp - (1 * self.weapon.ddmg)
 
 
     def rangedAttack(self, target):
         print('Attack!')
+        if target.isDead():
+            print('That target is already dead.')
+            return
+
         target.hp = target.hp - (1 * self.weapon.rdmg)
 
 
     def magicAttack(self, target):
         print('Attack!')
+        if target.isDead():
+            print('That target is already dead.')
+            return
+
         target.hp = target.hp - (1 * self.weapon.mdmg)
 
 
@@ -54,3 +63,8 @@ class Character(metaclass=ABCMeta):
             return True
 
         return False
+
+
+    def dropItems(self):
+        if isDead:
+            return inventory

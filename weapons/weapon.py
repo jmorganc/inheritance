@@ -3,7 +3,10 @@ from abc import ABCMeta, abstractmethod
 
 class Weapon(metaclass=ABCMeta):
 
-    dmg = 0
+    name = 'Weapon'
+    level = 1
+
+    ddmg = 0
     rdmg = 0
     mdmg = 0
 
