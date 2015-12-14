@@ -47,3 +47,10 @@ class Character(metaclass=ABCMeta):
 
     def defend(self):
         print('Defend!')
+
+
+    def isDead(self):
+        if self.hp <= 0:
+            return True
+
+        return False

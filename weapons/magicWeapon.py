@@ -1,7 +1,7 @@
 from abc import ABCMeta, abstractmethod
 from weapons import weapon
 
-class magicWeapon(weapon.Weapon):
+class MagicWeapon(weapon.Weapon):
 
     @abstractmethod
     def __init__(self):
