@@ -22,19 +22,17 @@ def main():
 def battle(attacker, target):
     """
     Exchange attacks until someone is dead
-
-    threads = []
-    for i in range(5):
-        t = threading.Thread(target=worker, args=(i,))
-        threads.append(t)
-        t.start()
     """
+    _battle_status(attacker, target)
     t = threading.Thread(target=_threaded_attack, args=(attacker, target))
+    t.daemon = True
     t.start()
 
     t = threading.Thread(target=_threaded_attack, args=(target, attacker))
+    t.daemon = True
     t.start()
     t.join()
+    _battle_status(attacker, target)
 
 
 def _threaded_attack(attacker, target):
@@ -45,8 +43,10 @@ def _threaded_attack(attacker, target):
             return
 
 
-def battle_status(attacker, target):
+def _battle_status(attacker, target):
+    print('\n====================================================')
     print('{}\'s HP: {}/{}. {}\'s HP: {}/{}'.format(attacker.name, attacker.hp, attacker.hp_max, target.name, target.hp, target.hp_max))
+    print('====================================================\n')
 
 
 if __name__ == '__main__':
