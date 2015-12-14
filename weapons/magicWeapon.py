@@ -4,6 +4,7 @@ from weapons import weapon
 class MagicWeapon(weapon.Weapon):
 
     name = 'Magic Weapon'
+    magic = True
 
     @abstractmethod
     def __init__(self):

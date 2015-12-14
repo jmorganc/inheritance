@@ -1,8 +1,8 @@
 from abc import ABCMeta, abstractmethod
 from characters import character
 
-class Monster(character.Character):
+class Player(character.Character):
 
     @abstractmethod
-    def __init__(self, name='Monster'):
+    def __init__(self, name='Player'):
         self.name = name

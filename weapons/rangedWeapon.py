@@ -4,6 +4,7 @@ from weapons import weapon
 class RangedWeapon(weapon.Weapon):
 
     name = 'Ranged Weapon'
+    ranged = True
 
     @abstractmethod
     def __init__(self):

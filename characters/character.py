@@ -4,10 +4,12 @@ from weapons import unarmed
 
 class Character(metaclass=ABCMeta):
 
-    name = 'Character'
+    name = ''
     level = 1
 
+    hp_max = 1
     hp = 1
+    mp_max = 1
     mp = 1
 
     ddef = 1
@@ -34,35 +36,50 @@ class Character(metaclass=ABCMeta):
 
 
     @abstractmethod
-    def __init__(self):
-        pass
+    def __init__(self, name='Character'):
+        self.name = name
 
 
-    def meleeAttack(self, target):
-        print('Attack!')
+    def battle(self, target):
+        """
+        Exchange attacks until someone is dead
+        """
+        while not self.isDead() or not target.isDead():
+            self.attack(target)
+            target.attack(self)
+
+
+    def attack(self, target):
+        print('{} attacks {} with {}!'.format(self.name, target.name, self.gear['weapon'].name))
+
         if target.isDead():
             print('That target is already dead.')
             return
 
-        target.hp = target.hp - (1 * self.gear['weapon'].ddmg)
+        if self.gear['weapon'].melee:
+            damage_dealt = self._meleeAttack(target)
+        elif self.gear['weapon'].magic:
+            damage_dealt = self._magicAttack(target)
+        elif self.gear['weapon'].ranged:
+            damage_dealt = self._rangedAttack(target)
+        else:
+            sys.exit('Unknown weapon type.')
+
+        target.hp = target.hp - damage_dealt
+
+        return damage_dealt
 
 
-    def rangedAttack(self, target):
-        print('Attack!')
-        if target.isDead():
-            print('That target is already dead.')
-            return
-
-        target.hp = target.hp - (1 * self.gear['weapon'].rdmg)
+    def _meleeAttack(self, target):
+        return self.gear['weapon'].ddmg
 
 
-    def magicAttack(self, target):
-        print('Attack!')
-        if target.isDead():
-            print('That target is already dead.')
-            return
+    def _rangedAttack(self, target):
+        return self.gear['weapon'].rdmg
 
-        target.hp = target.hp - (1 * self.gear['weapon'].mdmg)
+
+    def _rangedAttack(self, target):
+        return self.gear['weapon'].mdmg
 
 
     def defend(self):

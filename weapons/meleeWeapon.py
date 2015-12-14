@@ -4,6 +4,7 @@ from weapons import weapon
 class MeleeWeapon(weapon.Weapon):
 
     name = 'Melee Weapon'
+    melee = True
 
     @abstractmethod
     def __init__(self):
