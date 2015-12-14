@@ -9,4 +9,6 @@ class RangedWeapon(weapon.Weapon):
     def __init__(self):
         super().__init__()
 
+        self.ddmg = 0
+        self.rdmg = 0
         self.cooldown = 5

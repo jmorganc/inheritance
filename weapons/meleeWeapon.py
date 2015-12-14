@@ -9,4 +9,6 @@ class MeleeWeapon(weapon.Weapon):
     def __init__(self):
         super().__init__()
 
+        self.mdmg = 0
+        self.rdmg = 0
         self.cooldown = 2.5

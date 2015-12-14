@@ -24,6 +24,8 @@ class Character(metaclass=ABCMeta):
         'gloves': None,
         'pants': None,
         'boots': None,
+        'ring': None,
+        'necklace': None,
         'weapon': unarmed.Unarmed()
     }
 

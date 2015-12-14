@@ -8,4 +8,4 @@ class Wand(magicWeapon.MagicWeapon):
         super().__init__()
 
         self.ddmg = 2
-        self.mdmg = 10
+        self.mdmg = 5

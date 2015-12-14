@@ -9,4 +9,5 @@ class MagicWeapon(weapon.Weapon):
     def __init__(self):
         super().__init__()
 
+        self.rdmg = 0
         self.cooldown = 5
