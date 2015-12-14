@@ -1,5 +1,6 @@
 from abc import ABCMeta, abstractmethod
 from weapons import unarmed
+import time
 
 
 class Character(metaclass=ABCMeta):
@@ -40,33 +41,37 @@ class Character(metaclass=ABCMeta):
     def attack(self, target):
         print('{} attacks {} with {}!'.format(self.name, target.name, self.gear['weapon'].name))
 
-        if target.isDead():
+        if not target.is_alive():
             print('That target is already dead.')
             return
 
         if self.gear['weapon'].melee:
-            damage_dealt = self._meleeAttack()
+            damage_dealt = self._melee_attack()
         elif self.gear['weapon'].magic:
-            damage_dealt = self._magicAttack()
+            damage_dealt = self._magic_attack()
         elif self.gear['weapon'].ranged:
-            damage_dealt = self._rangedAttack()
+            damage_dealt = self._ranged_attack()
         else:
             sys.exit('Unknown weapon type.')
 
         target.hp = target.hp - damage_dealt
+        print('{} takes {} damage. ({}/{})\n'.format(target.name, damage_dealt, target.hp, target.hp_max))
+
+        if target.is_alive():
+            time.sleep(self.gear['weapon'].cooldown)
 
         return damage_dealt
 
 
-    def _meleeAttack(self):
+    def _melee_attack(self):
         return self.gear['weapon'].ddmg
 
 
-    def _rangedAttack(self):
+    def _magic_attack(self):
         return self.gear['weapon'].rdmg
 
 
-    def _rangedAttack(self):
+    def _ranged_attack(self):
         return self.gear['weapon'].mdmg
 
 
@@ -74,13 +79,13 @@ class Character(metaclass=ABCMeta):
         print('Defend!')
 
 
-    def isDead(self):
+    def is_alive(self):
         if self.hp <= 0:
-            return True
+            return False
 
-        return False
+        return True
 
 
-    def dropItems(self):
-        if isDead:
+    def drop_items(self):
+        if not is_alive:
             return inventory

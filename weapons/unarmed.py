@@ -5,6 +5,6 @@ class Unarmed(meleeWeapon.MeleeWeapon):
     def __init__(self):
         super().__init__()
 
-        self.name = 'Unamred'
+        self.name = 'Unarmed'
         self.ddmg = 1
-        self.cooldown = 5
+        self.cooldown = 1
